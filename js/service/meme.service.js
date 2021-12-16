@@ -25,7 +25,7 @@ var gMeme = {
 function _createImg(id) {
     const img = {
         id,
-        url: `../../imgs/${id}.jpg`
+        url: `imgs/${id}.jpg`
     }
     return img
 }
