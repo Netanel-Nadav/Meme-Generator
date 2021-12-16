@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <script src="https://kit.fontawesome.com/d840bd49d4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload="init()">
+
+    <div class="main-screen" onclick="toggleMenu()"></div>
+    
+    <header>
+        <section class="header-warrper flex main-layout space-between align-center">
+            <div class="logo"><img src="/imgs/LOGO.png" alt="Logo"></div>
+            <nav>
+                <ul class="flex clean-list nav-ul">
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Memes</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            <div class="toggle-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    </section>
+    </header>
+
+
+    <section class="search-section">
+        <div class="search-container main-layout">
+            <input type="text" class="search-input" placeholder="Enter Search Term"><span class="search-icon"><i
+                    class="fas fa-search"></i></span>
+            <datalist></datalist>
+        </div>
+    </section>
+    <main class="main-content">
+        <div class="img-container main-layout grid">
+        </div>
+        <div class="meme-modal align-center justify-center">
+            <div class="flex-container flex">
+                <input type="text" class="user-txt" name="txt" placeholder="Write Something" onkeyup="onSetLineText()">
+                <div class="controllers">
+                    <input type="color" class="btn user-color" name="user-color" onchange="onSetTextColor()">
+                    <!-- <input type="color" class="btn user-stoke" name="user-stoke" onchange="onSetStrokeColor()"> -->
+                    <!-- <button class="btn" onclick="onSetTextStroke()"><i class="fab fa-neos"></i></button> -->
+                    <button class="btn" onclick="onSetFontSize(2)"><i class="fas fa-superscript"></i></button>
+                    <button class="btn" onclick="onSetFontSize(-2)"><i class="fas fa-subscript"></i></button>
+                    <button class="btn" onclick="onChangeLines()"><i class="fas fa-sort"></i></button>
+                    <button class="btn" onclick="onMoveText(-2)"><i class="fas fa-arrow-up"></i></button>
+                    <button class="btn" onclick="onMoveText(2)"><i class="fas fa-arrow-down"></i></button>
+                    <button class="btn" onclick="onAlignText(-1)"><i class="fas fa-align-left"></i></button>
+                    <button class="btn" onclick="onAlignText(0)"><i class="fas fa-align-justify"></i></button>
+                    <button class="btn" onclick="onAlignText(1)"><i class="fas fa-align-right"></i></button>
+                </div>
+            </div>
+            <div class="canvas-container">
+                <canvas id="my-canvas" width="500" height="500">
+                </canvas>
+            </div>
+        </div>
+    </main>
+    <section class="about-me flex align-center">
+        <div class="me main-layout flex justify-center align-center">
+            <img src="/imgs/me.jpg" class="img-me" alt="netanel-nadav">
+            <div class="about-me-wrapper flex">
+                <h2>Netanel Nadav</h2>
+                <p class="about-me-text">My name is netanel nadav, i'm 30 years old with a Master
+                    Degree in digital communication.
+                    i've worked 3 years in a startup as a Marketer & PPC Specaliest and i decided to take my skills to
+                    the next level.
+                    thats why i started learning Code so i can make good idea's come true!</p>
+                <div class="social-warpper">
+                    <ul class="social-nav flex clean-list">
+                        <li><a href="https://www.facebook.com/NetanelNadav932" target="_blank">
+                                <i class="fab fa-facebook"></i>
+                            </a></li>
+                        <li><a href="https://www.linkedin.com/in/netanel-nadav-b07917210" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a></li>
+                        <li> <a href="https://www.instagram.com/netanelnadav" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="flex">
+        <div class="footer-container main-layout">
+            <div class="logo logoFooter"><img src="/imgs/LOGO.png" alt="Logo"></div>
+            <small class="copy-rights">all CopyRights Saves</small>
+        </div>
+    </footer>
+
+
+    <script src="/js/service/meme.service.js"></script>
+    <script src="/js/gallery.controller.js"></script>
+    <script src="/js/meme.controller.js"></script>
+</body>
+
+</html>
