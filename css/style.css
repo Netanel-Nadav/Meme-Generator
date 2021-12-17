@@ -2,18 +2,18 @@
 
 @font-face {
     font-family: montserrat;
-    src: url(/fonts/Montserrat-Regular.ttf);
+    src: url("../fonts/Montserrat-Regular.ttf");
 }
 
 @font-face {
     font-family: montserrat-bold;
-    src: url(/fonts/Montserrat-Bold.ttf);
+    src: url("../fonts/Montserrat-Bold.ttf");
 }
 
 
 @font-face {
     font-family: myriadPro;
-    src: url(/fonts/MyriadPro-Bold.otf);
+    src: url("../fonts/MyriadPro-Bold.otf");
 }
 
 /* Helpers */
@@ -140,6 +140,18 @@ body.menu-open .nav-ul {
     transform: translateX(0);
 }
 
+.img-container img{
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    opacity: 1;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+    cursor: pointer
+}
+
+.img-container img:hover {
+	opacity: .5;
+}
 
 .main-screen {
     position: fixed;
@@ -206,8 +218,9 @@ nav ul li a {
 
 .controllers {
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    gap: 10px;
+    grid-template-columns: 70px 70px 70px 70px;
+    gap: 15px;
+    justify-content: center;
 }
 
 .user-color {
@@ -215,10 +228,40 @@ nav ul li a {
 }
 
 .user-txt {
-    width: 106%;
+    flex-basis: 85%;
     height: 50px;
     border: none;
     border-radius: 5px;
+}
+
+.input-wrapper{
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+
+.select-fonts {
+    grid-column: 2 / span 3;
+    padding: 15px;
+    border: none;
+}
+
+.contrillers-wrapper {
+    flex-direction: column;
+}
+
+
+.color-picker {
+    position: relative;
+}
+
+.user-stroke {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+
 }
 
 .colorpick-eyedropper-input-trigger{
@@ -272,6 +315,7 @@ nav ul li a {
 
 .main-content {
     padding: 20px;
+    margin-bottom: 2.5rem;
 }
 
 footer {
@@ -294,7 +338,7 @@ footer {
 .meme-modal{
     display: none;
     gap: 15px;
-    flex-direction: column;
+    flex-direction: column-reverse;
 }
 
 .canvas-container {
@@ -316,12 +360,12 @@ footer {
 
 
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 850px) {
     
     .grid {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        gap: 15px;
+        gap: 20px;
     }
     .about-me{
         height: 560px;

@@ -10,14 +10,18 @@ var gMeme = {
             size: 20,
             align: 'center',
             color: 'red',
-            height: 50
+            height: 50,
+            font: 'impact',
+            stroke: 'black',
     },
     {
             txt: 'Write something Funny!',
             size: 20,
             align: 'center',
             color: 'red',
-            height: 400
+            height: 400,
+            font: 'impact',
+            stroke: 'black',
 }
     ]
 };
@@ -25,15 +29,15 @@ var gMeme = {
 function _createImg(id) {
     const img = {
         id,
-        url: `imgs/${id}.jpg`
+        url: `img/${id}.jpg`
     }
     return img
 }
 
 function _createImgs() {
     var galley = [];
-    for (var i = 1; i <= 18; i++) {
-        var currImg = _createImg(i);
+    for (let i = 1; i <= 18; i++) {
+        const currImg = _createImg(i);
         galley.push(currImg)
     }
     return galley
@@ -85,4 +89,29 @@ function moveText(val){
     if(gMeme.lines[gMeme.selectedLineIdx].height < 20 && val === -2) return
     if(gMeme.lines[gMeme.selectedLineIdx].height > 480 && val === 2) return
     gMeme.lines[gMeme.selectedLineIdx].height += val;
+}
+
+
+function setFontFamily(val){
+    switch (val) {
+        case 'impact':
+            gMeme.lines[gMeme.selectedLineIdx].font = 'impact';
+            break;
+        case 'arial':
+            gMeme.lines[gMeme.selectedLineIdx].font = 'arial';
+            break;
+        case 'times':
+            gMeme.lines[gMeme.selectedLineIdx].font = 'times';
+            break;
+        case 'gill':
+            gMeme.lines[gMeme.selectedLineIdx].font = 'gill';
+            break;
+        default: 
+        gMeme.lines[gMeme.selectedLineIdx].font = 'impact'
+    }
+}
+
+
+function setTextStroke(userStroke){
+    gMeme.lines[gMeme.selectedLineIdx].stroke = userStroke;
 }
