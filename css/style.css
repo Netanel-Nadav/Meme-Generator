@@ -223,6 +223,19 @@ nav ul li a {
     justify-content: center;
 }
 
+
+.download {
+    text-align: center;
+    padding-top: 10px;
+    grid-column: 1 / span 3;
+    background-color: #fff;
+    height: 60px;
+    font-size: 2.1875rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
 .user-color {
     padding: 5px;
 }
