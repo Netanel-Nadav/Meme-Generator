@@ -184,9 +184,9 @@ function moveLine(dx, dy) {
     gMeme.lines[gMeme.selectedLineIdx].pos.y += dy
 }
 
-
 function switchPages() {
-    const elModal = document.querySelector('.meme-modal').style.display = 'none';
-    const elImgContainer = document.querySelector('.img-container').style.display = 'grid';
-    const elAboutMe = document.querySelector('.about-me').style.display = 'flex';
+    document.querySelector('.meme-modal').style.display = 'none';
+    document.querySelector('.memes-container').style.display = 'none';
+    document.querySelector('.img-container').style.display = 'grid';
+    document.querySelector('.about-me').style.display = 'flex';
 }
