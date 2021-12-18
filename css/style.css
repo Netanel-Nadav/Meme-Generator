@@ -16,6 +16,16 @@
     src: url("../fonts/MyriadPro-Bold.otf");
 }
 
+@font-face {
+    font-family: imperial;
+    src: url("../fonts/ImperialScript-Regular.ttf");
+}
+
+@font-face {
+    font-family: playFair;
+    src: url("../fonts/PlayfairDisplay-VariableFont_wght.ttf");
+}
+
 /* Helpers */
 
 
@@ -369,7 +379,10 @@ footer {
     margin-inline-start: 10px;
 }
 
-
+.memes-container {
+    flex-direction: column;
+    padding: 20px;
+}
 
 
 

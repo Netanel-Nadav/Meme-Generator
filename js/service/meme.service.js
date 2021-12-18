@@ -12,6 +12,8 @@ var gMeme = {
             color: 'red',
             font: 'impact',
             stroke: 'black',
+            isSelected: true,
+            isDrag: false,
             pos: { x: 250, y: 50 },
         },
     ]
@@ -20,7 +22,7 @@ var gMeme = {
 function _createImg(id) {
     const img = {
         id,
-        url: `img/${id}.jpg`
+        url: `img/${id}.jpg`,
     }
     return img
 }
@@ -48,7 +50,6 @@ function getMeme() {
 }
 
 function setLineTxt(userText) {
-    if (!userText) return
     gMeme.lines[gMeme.selectedLineIdx].txt = userText;
 }
 
@@ -63,9 +64,25 @@ function setFontSize(val) {
     return gMeme.lines[gMeme.selectedLineIdx].size
 }
 
-function changeLines() {
-    if (gMeme.selectedLineIdx === gMeme.lines.length - 1) gMeme.selectedLineIdx = -1;
+function changeLines(currentText) {
+    gMeme.lines[gMeme.selectedLineIdx].isSelected = false;
+    if (gMeme.selectedLineIdx === gMeme.lines.length - 1) {
+        gMeme.lines[0].isSelected = true;
+        currentText.value = gMeme.lines[0].txt;
+        gMeme.selectedLineIdx = 0;
+        return
+    }
+
     gMeme.selectedLineIdx++
+    gMeme.lines[gMeme.selectedLineIdx].isSelected = true;
+    currentText.value = gMeme.lines[gMeme.selectedLineIdx].txt;
+}
+
+function deleteLine() {
+    if (gMeme.lines.length === 0) return
+    var currLine = gMeme.selectedLineIdx;
+    gMeme.lines.splice(currLine, 1)
+    gMeme.selectedLineIdx = 0;
 }
 
 
@@ -97,9 +114,11 @@ function setFontFamily(val) {
         case 'times':
             gMeme.lines[gMeme.selectedLineIdx].font = 'times';
             break;
-        case 'gill':
-            gMeme.lines[gMeme.selectedLineIdx].font = 'gill';
+        case 'play':
+            gMeme.lines[gMeme.selectedLineIdx].font = 'playFair';
             break;
+        case 'imperial':
+            gMeme.lines[gMeme.selectedLineIdx].font = 'imperial';
         default:
             gMeme.lines[gMeme.selectedLineIdx].font = 'impact'
     }
@@ -110,32 +129,28 @@ function setTextStroke(userStroke) {
     gMeme.lines[gMeme.selectedLineIdx].stroke = userStroke;
 }
 
-function deleteLine() {
-    if (gMeme.lines.length === 0) return
-    var currLine = gMeme.selectedLineIdx;
-    gMeme.lines.splice(currLine, 1)
-}
-
 function addLines() {
     if (gMeme.lines.length > 10) return
     if (gMeme.lines.length === 0) addLine();
-    gMeme.selectedLineIdx ++
-    const lastObj = gMeme.lines.length -1;
+    gMeme.lines[gMeme.selectedLineIdx].isSelected = false;
+    gMeme.selectedLineIdx++
+    const lastObj = gMeme.lines.length - 1;
     const currObjY = gMeme.lines[lastObj].pos.y;
     var newLine = {
-            txt: 'Write something Funny!',
-            size: 20,
-            align: 'center',
-            color: 'blue',
-            font: 'impact',
-            stroke: 'black',
-            pos: {x: 250, y: currObjY + 50},
+        txt: 'Write something Funny!',
+        size: 20,
+        align: 'center',
+        color: 'blue',
+        font: 'impact',
+        stroke: 'black',
+        isSelected: true,
+        pos: { x: 250, y: currObjY + 50 },
     }
     gMeme.lines.push(newLine);
 }
 
 
-function addLine(){
+function addLine() {
     gMeme.selectedLineIdx = 0;
     const line = {
         txt: 'Write something Funny!',
@@ -144,23 +159,34 @@ function addLine(){
         color: 'red',
         font: 'impact',
         stroke: 'black',
+        isSelected: true,
         pos: { x: 250, y: 50 },
     }
     gMeme.lines.push(line);
 }
 
 
+function isLineClicked(clickedPos) {
+    const currentLine = gMeme.lines[gMeme.selectedLineIdx];
+    const posX = currentLine.pos.x
+    const posY = currentLine.pos.y
+    var textWidth = gCtx.measureText(currentLine.txt).width + 20;
+    var textHight = currentLine.size + 20;
+    return Math.abs(clickedPos.x - posX) <= textWidth / 2 && Math.abs(clickedPos.y - posY) <= textHight / 2;
+}
+
+function setLineDrag(isDrag) {
+    gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
+}
+
+function moveLine(dx, dy) {
+    gMeme.lines[gMeme.selectedLineIdx].pos.x += dx
+    gMeme.lines[gMeme.selectedLineIdx].pos.y += dy
+}
 
 
-
-
-
-
-
-// change Lines //
-// if (gMeme.selectedLineIdx === gMeme.lines.length) {
-//     gMeme.selectedLineIdx = 0;
-// } else {
-//     var currLine = gMeme.selectedLineIdx;
-//     currLine++
-// }
+function switchPages() {
+    const elModal = document.querySelector('.meme-modal').style.display = 'none';
+    const elImgContainer = document.querySelector('.img-container').style.display = 'grid';
+    const elAboutMe = document.querySelector('.about-me').style.display = 'flex';
+}

@@ -19,9 +19,9 @@
             <div class="logo"><img src="img/LOGO.png" alt="Logo"></div>
             <nav>
                 <ul class="flex clean-list nav-ul">
-                    <li><a href="#">Gallery</a></li>
-                    <li><a href="#">Memes</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="#" onclick="onSwitchPages()">Gallery</a></li>
+                    <li><a href="#" onclick="onShowMemePage()">Memes</a></li>
+                    <li><a href="#about">About</a></li>
                 </ul>
             </nav>
             <div class="toggle-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
@@ -68,9 +68,12 @@
                         <option value="impact">Impact</option>
                         <option value="arial">Arial</option>
                         <option value="times">Times New Roman</option>
-                        <option value="gill">Gill Sans</option>
+                        <!-- <option value="imperial">Imperial Script</option>
+                        <option value="play">Play Fair</option> -->
                     </select>
-                    <a class="download" href="#" onclick="onDownloadCanvas(this)" download="My-Meme"><i class="fas fa-download"></i></a>
+                    <a class="download" href="#" onclick="onDownloadCanvas(this)" download="My-Meme"><i
+                            class="fas fa-download"></i></a>
+                    <button class="btn" onclick="onSaveMeme()"><i class="fas fa-save"></i></button>
                 </div>
             </div>
             <div class="canvas-container">
@@ -79,7 +82,10 @@
             </div>
         </div>
     </main>
-    <section class="about-me flex align-center">
+    <div class="memes-container grid justify-center">
+
+    </div>
+    <section class="about-me flex align-center" id="about">
         <div class="me main-layout flex justify-center align-center">
             <img src="img/me.jpg" class="img-me" alt="netanel-nadav">
             <div class="about-me-wrapper flex">
