@@ -97,7 +97,7 @@ function drawRect(line) {
 
 function onSetLineText() {
   var userText = document.querySelector('input[name=txt]').value;
-  setLineTxt(userText);
+  setLineText(userText);
   renderMeme();
 }
 
@@ -135,8 +135,8 @@ function onSetFontFamily(val) {
 }
 
 
-function onDeleteLines() {
-  deleteLine();
+function onRemoveLines() {
+  removeLine();
   renderMeme();
 }
 
@@ -222,7 +222,7 @@ function onSaveMeme() {
 function renderMemesPage() {
   const imgs = gSavedMemes;
   const strHTML = imgs.map((img, idx) => {
-    return `<img src="${img}">`
+    return `<img src="${img}" onclick="onMemeClick()">`
   })
   document.querySelector('.memes-container').innerHTML = strHTML.join('')
 }

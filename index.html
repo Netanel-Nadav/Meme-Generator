@@ -16,9 +16,9 @@
 
     <header>
         <section class="header-warrper flex main-layout space-between align-center">
-            <div class="logo"><img src="img/LOGO.png" alt="Logo"></div>
+            <div class="logo"><img src="img/LOGO.png" alt="Logo"/></div>
             <nav>
-                <ul class="flex clean-list nav-ul">
+                <ul class="nav-ul flex clean-list">
                     <li><a href="#" onclick="onSwitchPages()">Gallery</a></li>
                     <li><a href="#" onclick="onShowMemePage()">Memes</a></li>
                     <li><a href="#about">About</a></li>
@@ -31,7 +31,7 @@
 
     <section class="search-section">
         <div class="search-container main-layout">
-            <input type="text" class="search-input" placeholder="Enter Search Term"><span class="search-icon"><i
+            <input type="text" class="search-input" placeholder="Enter Search Term" /><span class="search-icon"><i
                     class="fas fa-search"></i></span>
             <datalist></datalist>
         </div>
@@ -45,14 +45,14 @@
             <div class="contrillers-wrapper flex">
                 <div class="input-wrapper flex">
                     <input type="text" class="user-txt" name="txt" placeholder="Write Something"
-                        onkeyup="onSetLineText()">
+                        onkeyup="onSetLineText()"/>
                     <button class="btn switch-lines" onclick="onChangeLines()"><i class="fas fa-sort"></i></button>
                     <button class="btn add-text" onclick="onAddLines()"><i class="fas fa-plus"></i></button>
-                    <button class="btn trash" onclick="onDeleteLines()"><i class="far fa-trash-alt"></i></button>
+                    <button class="btn trash" onclick="onRemoveLines()"><i class="far fa-trash-alt"></i></button>
                 </div>
 
                 <div class="controllers">
-                    <input type="color" class="btn user-color" name="user-color" onchange="onSetTextColor()">
+                    <input type="color" class="btn user-color" name="user-color" onchange="onSetTextColor()"/>
                     <button class="btn" onclick="onSetFontSize(2)"><i class="fas fa-superscript"></i></button>
                     <button class="btn" onclick="onSetFontSize(-2)"><i class="fas fa-subscript"></i></button>
                     <button class="btn" onclick="onMoveText(-2)"><i class="fas fa-arrow-up"></i></button>
@@ -62,7 +62,7 @@
                     <button class="btn" onclick="onMoveText(2)"><i class="fas fa-arrow-down"></i></button>
                     <div class="color-picker">
                         <button class="btn" onclick="onMoveText(2)"><i class="fas fa-palette"></i></button>
-                        <input type="color" class="btn user-stroke" name="user-stroke" onchange="onSetTextStroke()">
+                        <input type="color" class="btn user-stroke" name="user-stroke" onchange="onSetTextStroke()"/>
                     </div>
                     <select name="fonts" class="select-fonts" onchange="onSetFontFamily(this.value)">
                         <option value="impact">Impact</option>
@@ -83,11 +83,11 @@
         </div>
     </main>
     <div class="memes-container grid justify-center">
-
     </div>
+
     <section class="about-me flex align-center" id="about">
         <div class="me main-layout flex justify-center align-center">
-            <img src="img/me.jpg" class="img-me" alt="netanel-nadav">
+            <img src="img/me.jpg" class="img-me" alt="netanel-nadav" />
             <div class="about-me-wrapper flex">
                 <h2>Netanel Nadav</h2>
                 <p class="about-me-text">My name is netanel nadav, i'm 30 years old with a Master
@@ -115,16 +115,16 @@
 
     <footer class="flex">
         <div class="footer-container main-layout">
-            <div class="logo logoFooter"><img src="img/LOGO.png" alt="Logo"></div>
+            <div class="logo logoFooter"><img src="img/LOGO.png" alt="Logo"/></div>
             <small class="copy-rights">all CopyRights Saves</small>
         </div>
     </footer>
 
 
-    <script src="./js/service/storage.meme.js"></script>
-    <script src="./js/service/meme.service.js"></script>
-    <script src="./js/meme.controller.js"></script>
-    <script src="./js/gallery.controller.js"></script>
+    <script src="js/service/storage.meme.js"></script>
+    <script src="js/service/meme.service.js"></script>
+    <script src="js/meme.controller.js"></script>
+    <script src="js/gallery.controller.js"></script>
 </body>
 
 </html>

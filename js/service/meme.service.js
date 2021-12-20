@@ -9,7 +9,7 @@ var gMeme = {
             txt: 'Write something Funny!',
             size: 20,
             align: 'center',
-            color: 'red',
+            color: 'white',
             font: 'impact',
             stroke: 'black',
             isSelected: true,
@@ -37,98 +37,6 @@ function _createImgs() {
 }
 
 
-function getGimgs() {
-    return gImgs
-}
-
-function updateMeme(imgId) {
-    gMeme.selectedImgId = imgId;
-}
-
-function getMeme() {
-    return gMeme
-}
-
-function setLineTxt(userText) {
-    gMeme.lines[gMeme.selectedLineIdx].txt = userText;
-}
-
-function setTextColor(userColor) {
-    gMeme.lines[gMeme.selectedLineIdx].color = userColor
-}
-
-function setFontSize(val) {
-    if (gMeme.lines[gMeme.selectedLineIdx].size < 20 && val === -2) return
-    if (gMeme.lines[gMeme.selectedLineIdx].size > 70 && val === 2) return
-    gMeme.lines[gMeme.selectedLineIdx].size += val;
-    return gMeme.lines[gMeme.selectedLineIdx].size
-}
-
-function changeLines(currentText) {
-    gMeme.lines[gMeme.selectedLineIdx].isSelected = false;
-    if (gMeme.selectedLineIdx === gMeme.lines.length - 1) {
-        gMeme.lines[0].isSelected = true;
-        currentText.value = gMeme.lines[0].txt;
-        gMeme.selectedLineIdx = 0;
-        return
-    }
-
-    gMeme.selectedLineIdx++
-    gMeme.lines[gMeme.selectedLineIdx].isSelected = true;
-    currentText.value = gMeme.lines[gMeme.selectedLineIdx].txt;
-}
-
-function deleteLine() {
-    if (gMeme.lines.length === 0) return
-    var currLine = gMeme.selectedLineIdx;
-    gMeme.lines.splice(currLine, 1)
-    gMeme.selectedLineIdx = 0;
-}
-
-
-function alignText(align) {
-    gMeme.lines[gMeme.selectedLineIdx].align = align;
-    var x;
-    if (align === 'left') x = 30;
-    else if (align === 'center') x = 250;
-    else if (align === 'right') x = 450;
-    gMeme.lines[gMeme.selectedLineIdx].pos.x = x;
-}
-
-
-function moveText(val) {
-    if (gMeme.lines[gMeme.selectedLineIdx].pos.y < 20 && val === -2) return
-    if (gMeme.lines[gMeme.selectedLineIdx].pos.y > 480 && val === 2) return
-    gMeme.lines[gMeme.selectedLineIdx].pos.y += val;
-}
-
-
-function setFontFamily(val) {
-    switch (val) {
-        case 'impact':
-            gMeme.lines[gMeme.selectedLineIdx].font = 'impact';
-            break;
-        case 'arial':
-            gMeme.lines[gMeme.selectedLineIdx].font = 'arial';
-            break;
-        case 'times':
-            gMeme.lines[gMeme.selectedLineIdx].font = 'times';
-            break;
-        case 'play':
-            gMeme.lines[gMeme.selectedLineIdx].font = 'playFair';
-            break;
-        case 'imperial':
-            gMeme.lines[gMeme.selectedLineIdx].font = 'imperial';
-        default:
-            gMeme.lines[gMeme.selectedLineIdx].font = 'impact'
-    }
-}
-
-
-function setTextStroke(userStroke) {
-    gMeme.lines[gMeme.selectedLineIdx].stroke = userStroke;
-}
-
 function addLines() {
     if (gMeme.lines.length > 10) return
     if (gMeme.lines.length === 0) addLine();
@@ -140,7 +48,7 @@ function addLines() {
         txt: 'Write something Funny!',
         size: 20,
         align: 'center',
-        color: 'blue',
+        color: 'white',
         font: 'impact',
         stroke: 'black',
         isSelected: true,
@@ -156,7 +64,7 @@ function addLine() {
         txt: 'Write something Funny!',
         size: 20,
         align: 'center',
-        color: 'red',
+        color: 'white',
         font: 'impact',
         stroke: 'black',
         isSelected: true,
@@ -166,8 +74,106 @@ function addLine() {
 }
 
 
+function getImgs() {
+    return gImgs
+}
+
+function updateMeme(imgId) {
+    gMeme.selectedImgId = imgId;
+}
+
+function getMeme() {
+    return gMeme
+}
+
+function getSelectedLine(){
+    return gMeme.lines[gMeme.selectedLineIdx];
+}
+
+function setLineText(userText) {
+    getSelectedLine().txt = userText;
+}
+
+function setTextColor(userColor) {
+    getSelectedLine().color = userColor
+}
+
+function setFontSize(val) {
+    if ( getSelectedLine().size < 20 && val === -2) return
+    if ( getSelectedLine().size > 70 && val === 2) return
+    getSelectedLine().size += val;
+    return  getSelectedLine().size
+}
+
+function changeLines(currentText) {
+    getSelectedLine().isSelected = false;
+    if (gMeme.selectedLineIdx === gMeme.lines.length - 1) {
+        gMeme.lines[0].isSelected = true;
+        currentText.value = gMeme.lines[0].txt;
+        gMeme.selectedLineIdx = 0;
+        return
+    }
+
+    gMeme.selectedLineIdx++
+    getSelectedLine().isSelected = true;
+    currentText.value = getSelectedLine().txt;
+}
+
+function removeLine() {
+    if (gMeme.lines.length === 0) return
+    var currLine = gMeme.selectedLineIdx;
+    gMeme.lines.splice(currLine, 1)
+    gMeme.selectedLineIdx = 0;
+}
+
+
+function alignText(align) {
+    getSelectedLine().align = align;
+    var x;
+    if (align === 'left') x = 30;
+    else if (align === 'center') x = 250;
+    else if (align === 'right') x = 450;
+    getSelectedLine().pos.x = x;
+}
+
+
+function moveText(val) {
+    if ( getSelectedLine().pos.y < 20 && val === -2) return
+    if ( getSelectedLine().pos.y > 480 && val === 2) return
+     getSelectedLine().pos.y += val;
+}
+
+
+function setFontFamily(val) {
+    switch (val) {
+        case 'impact':
+             getSelectedLine().font = 'impact';
+            break;
+        case 'arial':
+             getSelectedLine().font = 'arial';
+            break;
+        case 'times':
+             getSelectedLine().font = 'times';
+            break;
+        case 'play':
+             getSelectedLine().font = 'playFair';
+            break;
+        case 'imperial':
+             getSelectedLine().font = 'imperial';
+        default:
+             getSelectedLine().font = 'impact'
+    }
+}
+
+
+function setTextStroke(userStroke) {
+     getSelectedLine().stroke = userStroke;
+}
+
+
+
 function isLineClicked(clickedPos) {
-    const currentLine = gMeme.lines[gMeme.selectedLineIdx];
+    const currentLine =  getSelectedLine();
     const posX = currentLine.pos.x
     const posY = currentLine.pos.y
     var textWidth = gCtx.measureText(currentLine.txt).width + 20;
@@ -176,12 +182,12 @@ function isLineClicked(clickedPos) {
 }
 
 function setLineDrag(isDrag) {
-    gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
+     getSelectedLine().isDrag = isDrag
 }
 
 function moveLine(dx, dy) {
-    gMeme.lines[gMeme.selectedLineIdx].pos.x += dx
-    gMeme.lines[gMeme.selectedLineIdx].pos.y += dy
+     getSelectedLine().pos.x += dx
+     getSelectedLine().pos.y += dy
 }
 
 function switchPages() {

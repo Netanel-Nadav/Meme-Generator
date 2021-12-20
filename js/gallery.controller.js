@@ -2,7 +2,7 @@
 
 
 function renderGallery(){
-    const imgs = getGimgs();
+    const imgs = getImgs();
     const strHTML = imgs.map(img => {
       return `<img src="${img.url}" onclick="onRenderMeme('${img.id}')" alt="">`
     })
